@@ -9,7 +9,7 @@ LINE = '│    '
 BLANK = '     '
 
 
-def build_tree(path: str, counter: dict, depth=1, prefix="") -> str:
+def build_tree(path: str, counter: dict, depth: int = 1, prefix: str = "") -> str:
     result = ""
     for item in sorted(os.listdir(path)):  # for item in sorted(os.listdir(path))
         is_last = item == sorted(os.listdir(path))[-1]  # is_last = True if item == items_list[-1] else False
@@ -31,12 +31,10 @@ def get_string(path: str, is_last: bool, name: str, counter: dict) -> str:
     if os.path.isfile(path):
         style = Fore.GREEN
         counter['files'] += 1
-
     string = f"{ANGLE if is_last else TEE} {style}{name}{Style.RESET_ALL}"
     return string
 
 
-def start_tree(path: str, counter: dict, depth=1) -> str:
-
+def start_tree(path: str, counter: dict, depth: int = 1) -> str:
     print(f"{Fore.BLUE}{os.path.abspath(path)}{Style.RESET_ALL}")
     return build_tree(path, counter, depth)
