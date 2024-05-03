@@ -1,0 +1,1 @@
+print(f'Imported module name: {__name__}')
